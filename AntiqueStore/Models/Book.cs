@@ -7,15 +7,16 @@ namespace AntiqueStore.Models
 {
     public class Book
     {
-        public int BookId { get; set; }
-        public string BookAuthor { get; set; }
-        public string BookTitle { get; set; }
-        public int BookQuantity { get; set; }
-        public int BookReleased { get; set; }
-        public string BookPublisher { get; set; }
-        public int BookPages { get; set; }
-        public int? BookSeries { get; set; } 
+        public long Id { get; set; }
+        public string Author { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public int PublicationDate { get; set; }
+        public string Publisher { get; set; }
+        public int Quantity { get; set; }
+        public double Price { get; set; }
 
-        public BookSeries BookSeries { get; set; }
+        public virtual List<Dimension> Dimensions { get; set; }
+        public virtual List<Format> Formats { get; set; }
     }
 }
