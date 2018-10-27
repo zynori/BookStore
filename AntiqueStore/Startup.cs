@@ -37,6 +37,8 @@ namespace AntiqueStore
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<BookContext>(options => options.UseSqlServer(connectionStringToDb));
+
+            services.AddTransient<BookContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
