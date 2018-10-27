@@ -15,7 +15,6 @@ namespace AntiqueStore.Entities
 
         public BookContext(DbContextOptions<BookContext> options) : base(options)
         {
-
         }
     }
 }
