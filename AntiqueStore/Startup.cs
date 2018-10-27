@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AntiqueStore.Entities;
+using AntiqueStore.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -39,6 +40,7 @@ namespace AntiqueStore
             services.AddDbContext<BookContext>(options => options.UseSqlServer(connectionStringToDb));
 
             services.AddTransient<BookContext>();
+            services.AddTransient<BookRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
