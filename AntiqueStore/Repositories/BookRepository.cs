@@ -28,6 +28,11 @@ namespace AntiqueStore.Repositories
             database.SaveChanges();
         }
 
+        public Book GetRecordById(int id)
+        {
+            return database.Books.ToList().FirstOrDefault(x => x.Id == id);
+        }
+
         public List<Book> Read()
         {
             return database.Books.ToList();

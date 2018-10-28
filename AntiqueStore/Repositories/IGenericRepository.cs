@@ -11,5 +11,7 @@ namespace AntiqueStore.Repositories
         List<Object> Read();
         void Update(Object element);
         void Delete(Object element);
+
+        Object GetRecordById(int id);
     }
 }
