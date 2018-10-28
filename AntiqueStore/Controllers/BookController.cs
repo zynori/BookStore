@@ -8,6 +8,7 @@ namespace AntiqueStore.Controllers
 {
     public class BookController : Controller
     {
+        [HttpGet("/books")]
         public IActionResult Index()
         {
             return View();
