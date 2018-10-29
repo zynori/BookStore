@@ -88,8 +88,8 @@ namespace AntiqueStore.Migrations
                     b.ToTable("Qualities");
 
                     b.HasData(
-                        new { QualityId = 1 },
-                        new { QualityId = 2 }
+                        new { QualityId = 1, Condition = "Good" },
+                        new { QualityId = 2, Condition = "Bad" }
                     );
                 });
 

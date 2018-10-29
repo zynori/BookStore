@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AntiqueStore.Migrations
 {
-    public partial class initdb : Migration
+    public partial class initDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -80,8 +80,8 @@ namespace AntiqueStore.Migrations
                 columns: new[] { "QualityId", "Condition" },
                 values: new object[,]
                 {
-                    { 1, null },
-                    { 2, null }
+                    { 1, "Good" },
+                    { 2, "Bad" }
                 });
 
             migrationBuilder.InsertData(

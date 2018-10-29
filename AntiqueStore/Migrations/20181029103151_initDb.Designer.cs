@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AntiqueStore.Migrations
 {
     [DbContext(typeof(BookContext))]
-    [Migration("20181029100907_initdb")]
-    partial class initdb
+    [Migration("20181029103151_initDb")]
+    partial class initDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -90,8 +90,8 @@ namespace AntiqueStore.Migrations
                     b.ToTable("Qualities");
 
                     b.HasData(
-                        new { QualityId = 1 },
-                        new { QualityId = 2 }
+                        new { QualityId = 1, Condition = "Good" },
+                        new { QualityId = 2, Condition = "Bad" }
                     );
                 });
 

@@ -25,8 +25,8 @@ namespace AntiqueStore.Entities
                 );
 
             modelBuilder.Entity<Quality>().HasData(
-                new { QualityId = 1, Qualities = "Good" },
-                new { QualityId = 2, Qualities = "Bad" }
+                new { QualityId = 1, Condition = "Good" },
+                new { QualityId = 2, Condition = "Bad" }
                 );
 
             modelBuilder.Entity<Book>().HasData(
