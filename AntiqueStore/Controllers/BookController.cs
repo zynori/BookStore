@@ -4,17 +4,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using AntiqueStore.Models;
 using AntiqueStore.Services;
+using AntiqueStore.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AntiqueStore.Controllers
 {
     public class BookController : Controller
     {
-        BookService db;
+        private BookService db;
+        private BookViewModel bookDTO;
 
-        public BookController(BookService db)
+        public BookController(BookService db, BookViewModel bookDTO)
         {
             this.db = db;
+            this.bookDTO = bookDTO;
         }
 
         public IActionResult Index()

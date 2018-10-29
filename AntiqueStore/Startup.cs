@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AntiqueStore.Entities;
 using AntiqueStore.Repositories;
 using AntiqueStore.Services;
+using AntiqueStore.ViewModel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -43,6 +44,7 @@ namespace AntiqueStore
             services.AddTransient<BookContext>();
             services.AddTransient<BookRepository>();
             services.AddTransient<BookService>();
+            services.AddTransient<BookViewModel>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

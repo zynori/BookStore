@@ -1,18 +1,19 @@
-﻿
+﻿@model AntiqueStore.ViewModel.BookViewModel
+
 @{
-    ViewData["Title"] = "Add";
+	ViewData["Title"] = "Add";
 }
 
 <h2>Add</h2>
 
 <form action="/add" method="post">
-	<label>Author:</label><input type="text" name="author" value="" />
-	<label>Title:</label><input type="text" name="title" value="" />
-	<label>Description:</label><input type="text" name="description" value="" />
-	<label>Publication:</label><input type="date" name="publicationDate" value="" />
-	<label>Publisher:</label><input type="text" name="publisher" value="" />
-	<label>Quantity:</label><input type="number" name="quantity" value="" />
-	<label>Price:</label><input type="number" name="price" value="" /> <span>HUF</span>
+	<label>Author:</label><input type="text" name="Author" value="" />
+	<label>Title:</label><input type="text" name="Title" value="" />
+	<label>Language:</label><input type="text" name="Language" value="" />
+	<label>Page:</label><input type="number" name="Page" value="" />
+	<label>Publication:</label><input type="text" name="PublicationDate" value="" />
+	<label>Quantity:</label><input type="number" name="Quantity" value="" /> <span>db</span>
+	<label>Price:</label><input type="number" name="Price" value="" /> <span>HUF</span>
 
 	<button type="submit">Submit</button>
 </form>

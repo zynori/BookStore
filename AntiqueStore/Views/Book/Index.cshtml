@@ -5,13 +5,11 @@
 
 <h2>Index - Books</h2>
 
-<form action="/books" method="post">
+<form action="/list" method="post">
 	<input type="search" name="input" value="" placeholder="Search" />
 </form>
 
-<a href="/books/add">Add</a>
-<hr />
-<a href="/books/edit">Edit</a>
+<a href="/add">Add</a>
 
 <table class="table table-bordered table-responsive table-hover">
 	<thead style="border: none;">
@@ -26,19 +24,19 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach (Book current in Model)
+		@foreach (Book book in Model)
 		{
 		<tr>
-			<td>@current.BookId</td>
-			<td>@current.Author</td>
-			<td>@current.Title</td>
-			<td>@current.Language</td>
-			<td>@current.Page</td>
-			<td>@current.PublicationDate</td>
-			<td>@current.Quantity</td>
-			<td>@current.Price HUF</td>
-			<td><a href="/@current.BookId/edit">EDIT</a></td>
-			<td><a href="/@current.BookId/delete">DELETE</a></td>
+			<td>@book.BookId</td>
+			<td>@book.Author</td>
+			<td>@book.Title</td>
+			<td>@book.Language</td>
+			<td>@book.Page</td>
+			<td>@book.PublicationDate</td>
+			<td>@book.Quantity</td>
+			<td>@book.Price HUF</td>
+			<td><a href="/@book.BookId/edit">EDIT</a></td>
+			<td><a href="/@book.BookId/delete">DELETE</a></td>
 		</tr>
 		}
 	</tbody>

@@ -9,14 +9,7 @@ namespace AntiqueStore.ViewModel
     public class BookViewModel
     {
         public List<Book> Books { get; set; }
-        public List<Format> Formats { get; set; }
-        public List<Quality> Qualities { get; set; }
-
-        public BookViewModel()
-        {
-            Books = new List<Book>();
-            Formats = new List<Format>();
-            Qualities = new List<Quality>();
-        }
+        public List<string> Formats { get; set; }
+        public List<string> Qualities { get; set; }
     }
 }
