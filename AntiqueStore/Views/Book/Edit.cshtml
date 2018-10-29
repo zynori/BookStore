@@ -1,0 +1,28 @@
+﻿@model AntiqueStore.ViewModel.BookViewModel
+
+@{
+	ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<a href="/">Back</a>
+
+<form action="/@Model.SelectedBook.BookId/edit" method="post" name="book">
+	<label>Author:</label><input type="text" name="Author" value="@Model.SelectedBook.Author" />
+	<hr />
+	<label>Title:</label><input type="text" name="Title" value="@Model.SelectedBook.Title" />
+	<hr />
+	<label>Language:</label><input type="text" name="Language" value="@Model.SelectedBook.Language" />
+	<hr />
+	<label>Page:</label><input type="number" name="Page" value="@Model.SelectedBook.Page" />
+	<hr />
+	<label>Publication Date:</label><input type="text" name="PublicationDate" value="@Model.SelectedBook.PublicationDate" />
+	<hr />
+	<label>Quantity:</label><input type="number" name="Quantity" value="@Model.SelectedBook.Quantity" /> <span> db</span>
+	<hr />
+	<label>Price:</label><input type="number" name="Price" value="@Model.SelectedBook.Price" /> <span> HUF</span>
+	<hr />
+
+	<button type="submit">Submit</button>
+</form>
