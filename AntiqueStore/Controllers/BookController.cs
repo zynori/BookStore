@@ -10,7 +10,6 @@ namespace AntiqueStore.Controllers
 {
     public class BookController : Controller
     {
-
         BookService db;
 
         public BookController(BookService db)
@@ -18,7 +17,6 @@ namespace AntiqueStore.Controllers
             this.db = db;
         }
 
-        [HttpGet("/books")]
         public IActionResult Index()
         {
             return View(db.ReadAll());
@@ -34,7 +32,7 @@ namespace AntiqueStore.Controllers
         public IActionResult AddNew(Book book)
         {
             db.Add(book);
-            return RedirectToAction("/books");
+            return RedirectToAction("Index");
         }
     }
 }
