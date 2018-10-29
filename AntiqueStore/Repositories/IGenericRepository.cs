@@ -8,7 +8,7 @@ namespace AntiqueStore.Repositories
     public interface IGenericRepository<Object>
     {
         void Create(Object element);
-        List<Object> Read();
+        IEnumerable<Object> Read();
         void Update(Object element);
         void Delete(Object element);
 

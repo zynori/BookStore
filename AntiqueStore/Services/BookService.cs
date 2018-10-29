@@ -37,12 +37,12 @@ namespace AntiqueStore.Services
             return bookRepository.GetRecordById(id);
         }
 
-        public List<Book> ReadAll()
+        public IEnumerable<Book> ReadAll()
         {
             return bookRepository.Read();
         }
 
-        public List<Book> Search(string input)
+        public IEnumerable<Book> Search(string input)
         {
             if(input is null)
             {

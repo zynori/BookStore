@@ -18,9 +18,9 @@
 		<tr>
 			<th>Author</th>
 			<th>Title</th>
-			<th>Description</th>
+			<th>Language</th>
+			<th>Page</th>
 			<th>Publication</th>
-			<th>Publisher</th>
 			<th>Quantity</th>
 			<th>Price</th>
 		</tr>
@@ -29,16 +29,16 @@
 		@foreach (Book current in Model)
 		{
 		<tr>
-			<td>@current.Id</td>
+			<td>@current.BookId</td>
 			<td>@current.Author</td>
 			<td>@current.Title</td>
-			<td>@current.Description</td>
+			<td>@current.Language</td>
+			<td>@current.Page</td>
 			<td>@current.PublicationDate</td>
-			<td>@current.Publisher</td>
 			<td>@current.Quantity</td>
 			<td>@current.Price HUF</td>
-			<td><a href="/@current.Id/edit">EDIT</a></td>
-			<td><a href="/@current.Id/delete">DELETE</a></td>
+			<td><a href="/@current.BookId/edit">EDIT</a></td>
+			<td><a href="/@current.BookId/delete">DELETE</a></td>
 		</tr>
 		}
 	</tbody>
