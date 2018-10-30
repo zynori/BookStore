@@ -38,17 +38,24 @@ namespace AntiqueStore.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet("/{id}/edit")]
+        [HttpGet("/edit/{id}")]
         public IActionResult Edit(int id)
         {
             var bookToEdit = db.GetElementById(id);
             return View(bookToEdit);
         }
 
-        [HttpPost("/{id}/edit")]
+        [HttpPost("/edit/{id}")]
         public IActionResult Edit(Book book)
         {
             db.Edit(book);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet("/delete/{id}")]
+        public IActionResult Remove(int id)
+        {
+            db.Delete(id);
             return RedirectToAction("Index");
         }
     }
