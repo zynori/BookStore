@@ -77,6 +77,14 @@ namespace AntiqueStore.Controllers
             return View();
         }
 
+        [HttpPost("/forsale")]
+        public IActionResult ForSale(Book book)
+        {
+            db.ForSale(book);
+            
+            return RedirectToAction("View", book.BookId);
+        }
+
         [HttpGet("/view/{id}")]
         public IActionResult View(int id, Book book)
         {
