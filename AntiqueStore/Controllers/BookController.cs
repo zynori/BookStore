@@ -46,8 +46,9 @@ namespace AntiqueStore.Controllers
         }
 
         [HttpPost("/edit/{id}")]
-        public IActionResult Edit(Book book)
+        public IActionResult Edit(int id, Book book)
         {
+            book.BookId = id;
             db.Edit(book);
             return RedirectToAction("Index");
         }
@@ -57,6 +58,12 @@ namespace AntiqueStore.Controllers
         {
             db.Delete(id);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet("/list")]
+        public IActionResult Search(string input, bool inStock)
+        {
+            return View("Index", db.Search(input, inStock));
         }
     }
 }

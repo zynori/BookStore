@@ -13,7 +13,5 @@ namespace AntiqueStore.Services
         void Delete(int id);
         Object GetElementById(int id);
         void Edit(Object element);
-
-        IEnumerable<Object> Search(string input);
     }
 }

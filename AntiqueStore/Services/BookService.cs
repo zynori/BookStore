@@ -42,12 +42,14 @@ namespace AntiqueStore.Services
             return bookRepository.Read();
         }
 
-        public IEnumerable<Book> Search(string input)
+        public IEnumerable<Book> Search(string input, bool isInStock)
         {
-            if(input is null)
+            if(input is null && isInStock is false)
             {
                 return bookRepository.Read();
             }
+
+            var searched = bookRepository.Read().Where(x => x.Title.ToLower().Contains(input.ToLower())).ToList();
 
             return bookRepository.Read().Where(x => x.Title.ToLower().Contains(input.ToLower())).ToList();
         }
