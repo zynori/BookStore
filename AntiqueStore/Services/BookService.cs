@@ -27,6 +27,12 @@ namespace AntiqueStore.Services
             bookRepository.Delete(deletable);
         }
 
+        public void Sell(int id)
+        {
+            bookRepository.GetRecordById(id).Quantity--;
+            bookRepository.Update(bookRepository.GetRecordById(id));
+        }
+
         public void Edit(Book book)
         {
             bookRepository.Update(book);

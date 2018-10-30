@@ -58,10 +58,19 @@ namespace AntiqueStore.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet("/sell/{id}")]
+        public IActionResult Sell(int id)
+        {
+            db.Sell(id);
+            return RedirectToAction("Index");
+        }
+
         [HttpPost("/list")]
         public IActionResult Search(string input, bool inStock)
         {
             return View("Index", db.Search(input, inStock));
         }
+
+        
     }
 }
