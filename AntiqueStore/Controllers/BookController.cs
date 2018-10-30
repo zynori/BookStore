@@ -39,7 +39,7 @@ namespace AntiqueStore.Controllers
         [HttpGet("/edit/{id}")]
         public IActionResult Edit(int id)
         {
-            var bookToEdit = db.GetElementById(id);
+            Book bookToEdit = db.GetElementById(id);
             return View(bookToEdit);
         }
 
@@ -77,13 +77,12 @@ namespace AntiqueStore.Controllers
             return View();
         }
 
-        [HttpPost("/forsale")]
-        public IActionResult ForSale(Book book)
+        [HttpGet("/view/{id}")]
+        public IActionResult View(int id, Book book)
         {
-            db.Add(book);
-            BookViewModel books = new BookViewModel();
-
-            return View("Index", books.SuggestedPrice);
+            book.BookId = id;
+            Book bookDetail = db.GetElementById(id);
+            return View(bookDetail);
         }
     }
 }
