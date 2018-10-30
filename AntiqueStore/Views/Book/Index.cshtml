@@ -1,4 +1,4 @@
-﻿@model List<Book>
+﻿@model IEnumerable<Book>
 @{
 	ViewData["Title"] = "Index";
 }
@@ -8,6 +8,7 @@
 <form action="/list" method="post">
 	<input type="search" name="input" value="" placeholder="Search" />
 	<input checked="checked" type="checkbox" name="inStock" value="true" /> <span>In stock</span>
+	<button type="submit">Search</button>
 </form>
 
 <a href="/add">Add</a>
@@ -15,6 +16,7 @@
 <table class="table table-bordered table-responsive table-hover">
 	<thead style="border: none;">
 		<tr>
+			<th>Id</th>
 			<th>Author</th>
 			<th>Title</th>
 			<th>Language</th>
