@@ -1,4 +1,4 @@
-﻿@model AntiqueStore.ViewModel.BookViewModel
+﻿@model Book
 
 @{
 	ViewData["Title"] = "Edit";
@@ -8,20 +8,20 @@
 
 <a href="/">Back</a>
 
-<form action="/@Model.SelectedBook.BookId/edit" method="post" name="book">
-	<label>Author:</label><input type="text" name="Author" value="@Model.SelectedBook.Author" />
+<form action="/@Model.BookId/edit" method="post" name="book">
+	<label>Author:</label><input type="text" name="Author" value="@Model.Author" />
 	<hr />
-	<label>Title:</label><input type="text" name="Title" value="@Model.SelectedBook.Title" />
+	<label>Title:</label><input type="text" name="Title" value="@Model.Title" />
 	<hr />
-	<label>Language:</label><input type="text" name="Language" value="@Model.SelectedBook.Language" />
+	<label>Language:</label><input type="text" name="Language" value="@Model.Language" />
 	<hr />
-	<label>Page:</label><input type="number" name="Page" value="@Model.SelectedBook.Page" />
+	<label>Page:</label><input type="number" name="Page" value="@Model.Page" />
 	<hr />
-	<label>Publication Date:</label><input type="text" name="PublicationDate" value="@Model.SelectedBook.PublicationDate" />
+	<label>Publication Date:</label><input type="text" name="PublicationDate" value="@Model.PublicationDate" />
 	<hr />
-	<label>Quantity:</label><input type="number" name="Quantity" value="@Model.SelectedBook.Quantity" /> <span> db</span>
+	<label>Quantity:</label><input type="number" name="Quantity" value="@Model.Quantity" /> <span> db</span>
 	<hr />
-	<label>Price:</label><input type="number" name="Price" value="@Model.SelectedBook.Price" /> <span> HUF</span>
+	<label>Price:</label><input type="number" name="Price" value="@Model.Price" /> <span> HUF</span>
 	<hr />
 
 	<button type="submit">Submit</button>
