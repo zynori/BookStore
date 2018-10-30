@@ -12,12 +12,10 @@ namespace AntiqueStore.Controllers
     public class BookController : Controller
     {
         private BookService db;
-        private BookViewModel bookDTO;
 
-        public BookController(BookService db, BookViewModel bookDTO)
+        public BookController(BookService db)
         {
             this.db = db;
-            this.bookDTO = bookDTO;
         }
 
         public IActionResult Index()
