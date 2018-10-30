@@ -41,17 +41,15 @@ namespace AntiqueStore.Services
         {
             return bookRepository.Read();
         }
-
-        public IEnumerable<Book> Search(string input, bool isInStock)
+        
+        public IEnumerable<Book> Search(string input, bool inStock)
         {
-            if(input is null && isInStock is false)
+            if(input is null)
             {
-                return bookRepository.Read();
+                return ReadAll();
             }
 
-            var searched = bookRepository.Read().Where(x => x.Title.ToLower().Contains(input.ToLower())).ToList();
-
-            return bookRepository.Read().Where(x => x.Title.ToLower().Contains(input.ToLower())).ToList();
+            return bookRepository.Read().Where(x => x.Title.ToLower().Contains(input.ToLower()) && (!inStock || x.Quantity > 0 )).ToList();
         }
     }
 }

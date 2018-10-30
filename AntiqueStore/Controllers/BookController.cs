@@ -60,7 +60,7 @@ namespace AntiqueStore.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet("/list")]
+        [HttpPost("/list")]
         public IActionResult Search(string input, bool inStock)
         {
             return View("Index", db.Search(input, inStock));
