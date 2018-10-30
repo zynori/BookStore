@@ -8,9 +8,9 @@ namespace AntiqueStore.ViewModel
 {
     public class BookViewModel
     {
-        public List<Book> Books { get; set; }
+        public IEnumerable<Book> Books { get; set; }
         public Book SelectedBook { get; set; }
-        public double Price { get; set; }
+        public double SuggestedPrice { get; set; }
 
         public List<string> Formats { get; set; }
         public List<string> Qualities { get; set; }

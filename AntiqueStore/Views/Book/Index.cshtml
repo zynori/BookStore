@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Book>
+﻿@model AntiqueStore.ViewModel.BookViewModel
 @{
 	ViewData["Title"] = "Index";
 }
@@ -27,21 +27,26 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach (Book book in Model)
+		@foreach (Book book in Model.Books)
 		{
-		<tr>
-			<td>@book.BookId</td>
-			<td>@book.Author</td>
-			<td>@book.Title</td>
-			<td>@book.Language</td>
-			<td>@book.Page</td>
-			<td>@book.PublicationDate</td>
-			<td>@book.Quantity db</td>
-			<td>@book.Price HUF</td>
-			<td><a href="/edit/@book.BookId">EDIT</a></td>
-			<td><a href="/sell/@book.BookId">SELL</a></td>
-			<td><a href="/delete/@book.BookId">DELETE</a></td>
-		</tr>
+			<tr>
+				<td>@book.BookId</td>
+				<td>@book.Author</td>
+				<td>@book.Title</td>
+				<td>@book.Language</td>
+				<td>@book.Page</td>
+				<td>@book.PublicationDate</td>
+				<td>@book.Quantity db</td>
+				<td>@book.Price HUF</td>
+				<td><a href="/edit/@book.BookId">EDIT</a></td>
+				<td><a href="/sell/@book.BookId">SELL</a></td>
+				<td><a href="/delete/@book.BookId">DELETE</a></td>
+			</tr>
 		}
 	</tbody>
 </table>
+
+@if (Model != null)
+{
+	@Model.SuggestedPrice <span>HUF</span>
+}

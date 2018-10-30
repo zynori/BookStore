@@ -81,7 +81,9 @@ namespace AntiqueStore.Controllers
         public IActionResult ForSale(Book book)
         {
             db.Add(book);
-            return RedirectToAction("Index", ForSale());
+            BookViewModel books = new BookViewModel();
+
+            return View("Index", books.SuggestedPrice);
         }
     }
 }
