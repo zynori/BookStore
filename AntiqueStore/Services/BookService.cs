@@ -57,5 +57,17 @@ namespace AntiqueStore.Services
 
             return bookRepository.Read().Where(x => (x.Author.ToLower().Contains(input.ToLower()) || x.Title.ToLower().Contains(input.ToLower())) && (!inStock || x.Quantity > 0)).ToList();
         }
+
+        public double ForSale(Book book)
+        {
+            double price = 300;
+            if (book.Page > 200)
+            {
+                price *= 0.85;
+            }
+            bookRepository.Create(book);
+
+            return price;
+        }
     }
 }

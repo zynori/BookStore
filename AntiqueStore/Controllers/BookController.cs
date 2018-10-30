@@ -71,6 +71,17 @@ namespace AntiqueStore.Controllers
             return View("Index", db.Search(input, inStock));
         }
 
-        
+        [HttpGet("/forsale")]
+        public IActionResult ForSale()
+        {
+            return View();
+        }
+
+        [HttpPost("/forsale")]
+        public IActionResult ForSale(Book book)
+        {
+            db.Add(book);
+            return RedirectToAction("Index", ForSale());
+        }
     }
 }

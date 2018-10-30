@@ -1,12 +1,12 @@
 ﻿@model AntiqueStore.ViewModel.BookViewModel
 
 @{
-	ViewData["Title"] = "Add";
+	ViewData["Title"] = "ForSale";
 }
 
-<h2>Add</h2>
+<h2>ForSale</h2>
 
-<form action="/add" method="post">
+<form action="/forsale" method="post">
 	<label>Author:</label><input type="text" name="Author" value="" />
 	<hr />
 	<label>Title:</label><input type="text" name="Title" value="" />
@@ -16,11 +16,6 @@
 	<label>Page:</label><input type="number" name="Page" value="" />
 	<hr />
 	<label>Publication Date:</label><input type="text" name="PublicationDate" value="" />
-	<hr />
-	<label>Quantity:</label><input type="number" name="Quantity" value="" /> <span> db</span>
-	<hr />
-	<label>Price:</label><input type="number" name="Price" value="" /> <span> HUF</span>
-	<hr />
-
+	
 	<button type="submit">Submit</button>
 </form>
