@@ -26,10 +26,8 @@ namespace AntiqueStore.Controllers
         }
 
         [HttpPost("/add")]
-        public IActionResult AddNew(Book book, int qualityId, int formatId)
+        public IActionResult AddNew(Book book)
         {
-            book.FormatId = formatId;
-            book.QualityId = qualityId;
             db.AddBook(book);
             return RedirectToAction("Index");
         }
