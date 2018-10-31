@@ -28,14 +28,14 @@ namespace AntiqueStore.Services
         
         public void DeleteBook(int id)
         {
-            Book deletable = bookRepository.GetRecordById(id);
+            Book deletable = GetBookById(id);
             bookRepository.Delete(deletable);
         }
 
         public void SellBook(int id)
         {
-            bookRepository.GetRecordById(id).Quantity--;
-            bookRepository.Update(bookRepository.GetRecordById(id));
+            GetBookById(id).Quantity--;
+            bookRepository.Update(GetBookById(id));
         }
 
         public void EditBook(Book book)
@@ -80,7 +80,7 @@ namespace AntiqueStore.Services
                 return GetBooks();
             }
 
-            return bookRepository.Read().Where(x => (x.Author.ToLower().Contains(input.ToLower()) || x.Title.ToLower().Contains(input.ToLower())) && (!inStock || x.Quantity > 0)).ToList();
+            return GetBooks().Where(x => (x.Author.ToLower().Contains(input.ToLower()) || x.Title.ToLower().Contains(input.ToLower())) && (!inStock || x.Quantity > 0)).ToList();
         }
 
         public void ForSale(Book book)
@@ -92,7 +92,7 @@ namespace AntiqueStore.Services
                 price += 300;
             }
 
-            bookRepository.Create(book);
+            AddBook(book);
         }
     }
 }
