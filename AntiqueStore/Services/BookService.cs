@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AntiqueStore.Services
 {
-    public class BookService //: IGenericService<Book>
+    public class BookService
     {
         private BookRepository bookRepository;
         private QualityRepository qualityRepository;

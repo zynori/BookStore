@@ -22,7 +22,7 @@ namespace AntiqueStore.Controllers
         [HttpGet("/add")]
         public IActionResult Add()
         {
-            return View();
+            return View(db.GetAll());
         }
 
         [HttpPost("/add")]

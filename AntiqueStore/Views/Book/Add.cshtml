@@ -19,15 +19,23 @@
 	<hr />
 	<label>Publication Date:</label><input type="text" name="PublicationDate" value="" />
 	<hr />
+	<label>Condition:</label>
 	<select name="Condition">
-		<option value="" disabled selected>Quality</option>
+		<option value="" disabled selected>Select condition</option>
 		@foreach (Quality quality in Model.Qualities)
 		{
-			<option>@quality.Condition</option>
+			<option value=@quality.Condition>@quality.Condition</option>
 		}
-	</select><input type="text" name="Condition" value="" />
+	</select>
 	<hr />
-	<label>Format:</label><input type="text" name="Binding" value="" />
+	<label>Binding:</label>
+	<select name="Binding">
+		<option value="" disabled selected>Select binding</option>
+		@foreach (Format format in Model.Formats)
+		{
+			<option value=@format.Binding>@format.Binding</option>
+		}
+	</select>
 	<hr />
 	<label>Quantity:</label><input type="number" name="Quantity" value="" /> <span> db</span>
 	<hr />
