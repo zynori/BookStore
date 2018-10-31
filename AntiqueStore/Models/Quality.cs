@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace AntiqueStore.Models
 {
-    public partial class Quality
+    public class Quality
     {
-        public int QualityId { get; set; }
+        public int Id { get; set; }
         public string Condition { get; set; }
 
         public ICollection<Book> Books { get; set; }

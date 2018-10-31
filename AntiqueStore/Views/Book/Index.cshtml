@@ -1,9 +1,9 @@
-﻿@model IEnumerable<Book>
+﻿@model AntiqueStore.ViewModel.BookViewModel
 @{
 	ViewData["Title"] = "Index";
 }
 
-<h2>Index - Books</h2>
+<h2>Books</h2>
 
 <form action="/list" method="post">
 	<input type="search" name="input" value="" placeholder="Search" />
@@ -11,7 +11,7 @@
 	<button type="submit">Search</button>
 </form>
 
-<a href="/add">Add</a> || <a href="/forsale">I want to sell a book</a>
+<a href="/add">Add</a> | <a href="/forsale">I want to sell a book</a>
 
 <table class="table table-bordered table-responsive table-hover">
 	<thead style="border: none;">
@@ -22,26 +22,30 @@
 			<th>Language</th>
 			<th>Page</th>
 			<th>Publication</th>
+			<th>Quality</th>
+			<th>Format</th>
 			<th>Quantity</th>
 			<th>Price</th>
 		</tr>
 	</thead>
 	<tbody>
-		@foreach (Book book in Model)
+		@foreach (Book book in Model.Books)
 		{
 		<tr>
-			<td>@book.BookId</td>
+			<td>@book.Id</td>
 			<td>@book.Author</td>
 			<td>@book.Title</td>
 			<td>@book.Language</td>
 			<td>@book.Page</td>
 			<td>@book.PublicationDate</td>
+			<td>@book.Quality.Condition</td>
+			<td>@book.Format.Binding</td>
 			<td>@book.Quantity db</td>
 			<td>@book.Price HUF</td>
-			<td><a href="/edit/@book.BookId">EDIT</a></td>
-			<td><a href="/sell/@book.BookId">SELL</a></td>
-			<td><a href="/delete/@book.BookId">DELETE</a></td>
-			<td><a href="/view/@book.BookId">VIEW</a></td>
+			<td><a href="/edit/@book.Id">EDIT</a></td>
+			<td><a href="/sell/@book.Id">SELL</a></td>
+			<td><a href="/delete/@book.Id">DELETE</a></td>
+			<td><a href="/view/@book.Id">VIEW</a></td>
 		</tr>
 		}
 	</tbody>

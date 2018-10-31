@@ -20,18 +20,18 @@ namespace AntiqueStore.Entities
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Format>().HasData(
-                new { FormatId = 1, Binding = "Paperback"},
-                new { FormatId = 2, Binding = "Hardcover"}
+                new { Id = 1, Binding = "Paperback"},
+                new { Id = 2, Binding = "Hardcover"}
                 );
 
             modelBuilder.Entity<Quality>().HasData(
-                new { QualityId = 1, Condition = "Good" },
-                new { QualityId = 2, Condition = "Bad" }
+                new { Id = 1, Condition = "Good" },
+                new { Id = 2, Condition = "Bad" }
                 );
 
             modelBuilder.Entity<Book>().HasData(
-                new { BookId = 1, Author = "Andre Aciman", Title = "Call Me By Your Name", Language = "English", Page = 256, PublicationDate = "03/Apr/2018", Quantity = 2, Price = 6999, FormatId = 2, QualityId = 1 },
-                new { BookId = 2, Author = "Stephen King", Title = "Elevation", Language = "English", Page = 160, PublicationDate = "30/Oct/2018", Quantity = 1, Price = 2399, FormatId = 1, QualityId = 2 }
+                new { Id = 1, Author = "Andre Aciman", Title = "Call Me By Your Name", Language = "English", Page = 256, PublicationDate = "03/Apr/2018", Quantity = 2, Price = 6999 },
+                new { Id = 2, Author = "Stephen King", Title = "Elevation", Language = "English", Page = 160, PublicationDate = "30/Oct/2018", Quantity = 1, Price = 2399 }
                 );
         }
     }

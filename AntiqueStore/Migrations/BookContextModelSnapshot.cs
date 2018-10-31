@@ -21,7 +21,7 @@ namespace AntiqueStore.Migrations
 
             modelBuilder.Entity("AntiqueStore.Models.Book", b =>
                 {
-                    b.Property<int>("BookId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -43,7 +43,7 @@ namespace AntiqueStore.Migrations
 
                     b.Property<string>("Title");
 
-                    b.HasKey("BookId");
+                    b.HasKey("Id");
 
                     b.HasIndex("FormatId");
 
@@ -52,54 +52,54 @@ namespace AntiqueStore.Migrations
                     b.ToTable("Books");
 
                     b.HasData(
-                        new { BookId = 1, Author = "Andre Aciman", FormatId = 2, Language = "English", Page = 256, Price = 6999, PublicationDate = "03/Apr/2018", QualityId = 1, Quantity = 2, Title = "Call Me By Your Name" },
-                        new { BookId = 2, Author = "Stephen King", FormatId = 1, Language = "English", Page = 160, Price = 2399, PublicationDate = "30/Oct/2018", QualityId = 2, Quantity = 1, Title = "Elevation" }
+                        new { Id = 1, Author = "Andre Aciman", Language = "English", Page = 256, Price = 6999, PublicationDate = "03/Apr/2018", Quantity = 2, Title = "Call Me By Your Name" },
+                        new { Id = 2, Author = "Stephen King", Language = "English", Page = 160, Price = 2399, PublicationDate = "30/Oct/2018", Quantity = 1, Title = "Elevation" }
                     );
                 });
 
             modelBuilder.Entity("AntiqueStore.Models.Format", b =>
                 {
-                    b.Property<int>("FormatId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Binding");
 
-                    b.HasKey("FormatId");
+                    b.HasKey("Id");
 
                     b.ToTable("Formats");
 
                     b.HasData(
-                        new { FormatId = 1, Binding = "Paperback" },
-                        new { FormatId = 2, Binding = "Hardcover" }
+                        new { Id = 1, Binding = "Paperback" },
+                        new { Id = 2, Binding = "Hardcover" }
                     );
                 });
 
             modelBuilder.Entity("AntiqueStore.Models.Quality", b =>
                 {
-                    b.Property<int>("QualityId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Condition");
 
-                    b.HasKey("QualityId");
+                    b.HasKey("Id");
 
                     b.ToTable("Qualities");
 
                     b.HasData(
-                        new { QualityId = 1, Condition = "Good" },
-                        new { QualityId = 2, Condition = "Bad" }
+                        new { Id = 1, Condition = "Good" },
+                        new { Id = 2, Condition = "Bad" }
                     );
                 });
 
             modelBuilder.Entity("AntiqueStore.Models.Book", b =>
                 {
-                    b.HasOne("AntiqueStore.Models.Format", "Formats")
+                    b.HasOne("AntiqueStore.Models.Format", "Format")
                         .WithMany("Books")
                         .HasForeignKey("FormatId");
 
-                    b.HasOne("AntiqueStore.Models.Quality", "Qualities")
+                    b.HasOne("AntiqueStore.Models.Quality", "Quality")
                         .WithMany("Books")
                         .HasForeignKey("QualityId");
                 });

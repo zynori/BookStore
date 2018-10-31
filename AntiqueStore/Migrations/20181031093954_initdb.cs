@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AntiqueStore.Migrations
 {
-    public partial class initDb : Migration
+    public partial class initdb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,33 +11,33 @@ namespace AntiqueStore.Migrations
                 name: "Formats",
                 columns: table => new
                 {
-                    FormatId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Binding = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Formats", x => x.FormatId);
+                    table.PrimaryKey("PK_Formats", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Qualities",
                 columns: table => new
                 {
-                    QualityId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Condition = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Qualities", x => x.QualityId);
+                    table.PrimaryKey("PK_Qualities", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Books",
                 columns: table => new
                 {
-                    BookId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Author = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
@@ -51,24 +51,33 @@ namespace AntiqueStore.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Books", x => x.BookId);
+                    table.PrimaryKey("PK_Books", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Books_Formats_FormatId",
                         column: x => x.FormatId,
                         principalTable: "Formats",
-                        principalColumn: "FormatId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Books_Qualities_QualityId",
                         column: x => x.QualityId,
                         principalTable: "Qualities",
-                        principalColumn: "QualityId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
+                table: "Books",
+                columns: new[] { "Id", "Author", "FormatId", "Language", "Page", "Price", "PublicationDate", "QualityId", "Quantity", "Title" },
+                values: new object[,]
+                {
+                    { 1, "Andre Aciman", null, "English", 256, 6999, "03/Apr/2018", null, 2, "Call Me By Your Name" },
+                    { 2, "Stephen King", null, "English", 160, 2399, "30/Oct/2018", null, 1, "Elevation" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Formats",
-                columns: new[] { "FormatId", "Binding" },
+                columns: new[] { "Id", "Binding" },
                 values: new object[,]
                 {
                     { 1, "Paperback" },
@@ -77,22 +86,12 @@ namespace AntiqueStore.Migrations
 
             migrationBuilder.InsertData(
                 table: "Qualities",
-                columns: new[] { "QualityId", "Condition" },
+                columns: new[] { "Id", "Condition" },
                 values: new object[,]
                 {
                     { 1, "Good" },
                     { 2, "Bad" }
                 });
-
-            migrationBuilder.InsertData(
-                table: "Books",
-                columns: new[] { "BookId", "Author", "FormatId", "Language", "Page", "Price", "PublicationDate", "QualityId", "Quantity", "Title" },
-                values: new object[] { 1, "Andre Aciman", 2, "English", 256, 6999, "03/Apr/2018", 1, 2, "Call Me By Your Name" });
-
-            migrationBuilder.InsertData(
-                table: "Books",
-                columns: new[] { "BookId", "Author", "FormatId", "Language", "Page", "Price", "PublicationDate", "QualityId", "Quantity", "Title" },
-                values: new object[] { 2, "Stephen King", 1, "English", 160, 2399, "30/Oct/2018", 2, 1, "Elevation" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_FormatId",

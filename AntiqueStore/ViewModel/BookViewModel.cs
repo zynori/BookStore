@@ -9,10 +9,7 @@ namespace AntiqueStore.ViewModel
     public class BookViewModel
     {
         public IEnumerable<Book> Books { get; set; }
-        public Book SelectedBook { get; set; }
-        public double SuggestedPrice { get; set; }
-
-        public List<string> Formats { get; set; }
-        public List<string> Qualities { get; set; }
+        public IEnumerable<Format> Formats { get; set; }
+        public IEnumerable<Quality> Qualities { get; set; }
     }
 }

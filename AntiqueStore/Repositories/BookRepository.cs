@@ -30,7 +30,7 @@ namespace AntiqueStore.Repositories
 
         public Book GetRecordById(int id)
         {
-            return database.Books.ToList().FirstOrDefault(x => x.BookId == id);
+            return database.Books.ToList().FirstOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<Book> Read()

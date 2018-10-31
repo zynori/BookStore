@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AntiqueStore.Models;
+﻿using AntiqueStore.Models;
 using AntiqueStore.Services;
 using AntiqueStore.ViewModel;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +16,7 @@ namespace AntiqueStore.Controllers
 
         public IActionResult Index()
         {
-            return View(db.ReadAll());
+            return View(db.GetAll());
         }
 
         [HttpGet("/add")]
@@ -32,36 +28,36 @@ namespace AntiqueStore.Controllers
         [HttpPost("/add")]
         public IActionResult AddNew(Book book)
         {
-            db.Add(book);
+            db.AddBook(book);
             return RedirectToAction("Index");
         }
 
         [HttpGet("/edit/{id}")]
         public IActionResult Edit(int id)
         {
-            Book bookToEdit = db.GetElementById(id);
+            Book bookToEdit = db.GetBookById(id);
             return View(bookToEdit);
         }
 
         [HttpPost("/edit/{id}")]
         public IActionResult Edit(int id, Book book)
         {
-            book.BookId = id;
-            db.Edit(book);
+            book.Id = id;
+            db.EditBook(book);
             return RedirectToAction("Index");
         }
 
         [HttpGet("/delete/{id}")]
         public IActionResult Remove(int id)
         {
-            db.Delete(id);
+            db.DeleteBook(id);
             return RedirectToAction("Index");
         }
 
         [HttpGet("/sell/{id}")]
         public IActionResult Sell(int id)
         {
-            db.Sell(id);
+            db.SellBook(id);
             return RedirectToAction("Index");
         }
 
@@ -81,15 +77,15 @@ namespace AntiqueStore.Controllers
         public IActionResult ForSale(Book book)
         {
             db.ForSale(book);
-            
-            return RedirectToAction("View", book.BookId);
+
+            return RedirectToAction("View", book.Id);
         }
 
         [HttpGet("/view/{id}")]
         public IActionResult View(int id, Book book)
         {
-            book.BookId = id;
-            Book bookDetail = db.GetElementById(id);
+            book.Id = id;
+            Book bookDetail = db.GetBookById(id);
             return View(bookDetail);
         }
     }
