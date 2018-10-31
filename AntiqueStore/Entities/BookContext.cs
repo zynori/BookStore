@@ -30,8 +30,8 @@ namespace AntiqueStore.Entities
                 );
 
             modelBuilder.Entity<Book>().HasData(
-                new { Id = 1, Author = "Andre Aciman", Title = "Call Me By Your Name", Language = "English", Page = 256, PublicationDate = "03/Apr/2018", Quantity = 2, Price = 6999 },
-                new { Id = 2, Author = "Stephen King", Title = "Elevation", Language = "English", Page = 160, PublicationDate = "30/Oct/2018", Quantity = 1, Price = 2399 }
+                new { Id = 1, Author = "Andre Aciman 2", Title = "Call Me By Your Name", Language = "English", FormatId = 1, Page = 256, PublicationDate = "03/Apr/2018", QualityId = 1, Quantity = 2, Price = 6999 },
+                new { Id = 2, Author = "Stephen King", Title = "Elevation", Language = "English", FormatId = 2, Page = 160, PublicationDate = "30/Oct/2018", QualityId = 1, Quantity = 1, Price = 2399 }
                 );
         }
     }

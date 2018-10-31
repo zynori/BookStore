@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace AntiqueStore.Repositories
 {
@@ -30,12 +31,15 @@ namespace AntiqueStore.Repositories
 
         public Book GetRecordById(int id)
         {
-            return database.Books.ToList().FirstOrDefault(x => x.Id == id);
+            return this.Read().FirstOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<Book> Read()
         {
-            return database.Books.ToList();
+            return database.Books
+                .Include(x => x.Quality)
+                .Include(x => x.Format)
+                .ToList();
         }
 
         public void Update(Book book)
