@@ -30,7 +30,7 @@ namespace AntiqueStore.Repositories
 
         public Quality GetRecordById(int id)
         {
-            return database.Qualities.ToList().FirstOrDefault(x => x.Id == id);
+            return Read().FirstOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<Quality> Read()

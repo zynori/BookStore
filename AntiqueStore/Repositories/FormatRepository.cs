@@ -1,5 +1,6 @@
 ﻿using AntiqueStore.Entities;
 using AntiqueStore.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,12 +31,13 @@ namespace AntiqueStore.Repositories
 
         public Format GetRecordById(int id)
         {
-            return database.Formats.ToList().FirstOrDefault(x => x.Id == id);
+            return Read().FirstOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<Format> Read()
         {
-            return database.Formats.ToList();
+            return database.Formats
+                .ToList();
         }
 
         public void Update(Format format)

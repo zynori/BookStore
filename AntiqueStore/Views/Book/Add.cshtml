@@ -19,6 +19,16 @@
 	<hr />
 	<label>Publication Date:</label><input type="text" name="PublicationDate" value="" />
 	<hr />
+	<select name="Condition">
+		<option value="" disabled selected>Quality</option>
+		@foreach (Quality quality in Model.Qualities)
+		{
+			<option>@quality.Condition</option>
+		}
+	</select><input type="text" name="Condition" value="" />
+	<hr />
+	<label>Format:</label><input type="text" name="Binding" value="" />
+	<hr />
 	<label>Quantity:</label><input type="number" name="Quantity" value="" /> <span> db</span>
 	<hr />
 	<label>Price:</label><input type="number" name="Price" value="" /> <span> HUF</span>

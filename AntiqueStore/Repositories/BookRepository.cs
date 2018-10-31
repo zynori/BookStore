@@ -31,7 +31,7 @@ namespace AntiqueStore.Repositories
 
         public Book GetRecordById(int id)
         {
-            return this.Read().FirstOrDefault(x => x.Id == id);
+            return Read().FirstOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<Book> Read()
