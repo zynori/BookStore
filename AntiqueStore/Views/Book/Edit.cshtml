@@ -1,4 +1,4 @@
-﻿@model Book
+﻿@model AntiqueStore.ViewModel.BookViewModel
 
 @{
 	ViewData["Title"] = "Edit";
@@ -8,20 +8,36 @@
 
 <a href="/">Back</a>
 
-<form action="/edit/@Model.Id" method="post" name="book">
-	<label>Author:</label><input type="text" name="Author" value="@Model.Author" />
+<form action="/edit/@Model.SelectedBook.Id" method="post" name="book">
+	<label>Author:</label><input type="text" name="Author" value="@Model.SelectedBook.Author" />
 	<hr />
-	<label>Title:</label><input type="text" name="Title" value="@Model.Title" />
+	<label>Title:</label><input type="text" name="Title" value="@Model.SelectedBook.Title" />
 	<hr />
-	<label>Language:</label><input type="text" name="Language" value="@Model.Language" />
+	<label>Language:</label><input type="text" name="Language" value="@Model.SelectedBook.Language" />
 	<hr />
-	<label>Page:</label><input type="number" name="Page" value="@Model.Page" />
+	<label>Page:</label><input type="number" name="Page" value="@Model.SelectedBook.Page" />
 	<hr />
-	<label>Publication Date:</label><input type="text" name="PublicationDate" value="@Model.PublicationDate" />
+	<label>Publication Date:</label><input type="text" name="PublicationDate" value="@Model.SelectedBook.PublicationDate" />
 	<hr />
-	<label>Quantity:</label><input type="number" name="Quantity" value="@Model.Quantity" /> <span> db</span>
+	<label>Condition:</label>
+	<select name="QualityId">
+		@foreach (Quality quality in Model.Qualities)
+		{
+			<option value=@quality.Id>@Model.SelectedBook.Quality.Condition</option>
+		}
+	</select>
 	<hr />
-	<label>Price:</label><input type="number" name="Price" value="@Model.Price" /> <span> HUF</span>
+	<label>Binding:</label>
+	<select name="FormatId">
+		@foreach (Format format in Model.Formats)
+		{
+			<option value=@format.Id>@Model.SelectedBook.Format.Binding</option>
+		}
+	</select>
+	<hr />
+	<label>Quantity:</label><input type="number" name="Quantity" value="@Model.SelectedBook.Quantity" /> <span> db</span>
+	<hr />
+	<label>Price:</label><input type="number" name="Price" value="@Model.SelectedBook.Price" /> <span> HUF</span>
 	<hr />
 
 	<button type="submit">Submit</button>

@@ -35,7 +35,8 @@ namespace AntiqueStore.Controllers
         [HttpGet("/edit/{id}")]
         public IActionResult Edit(int id)
         {
-            Book bookToEdit = db.GetBookById(id);
+            BookViewModel bookToEdit = db.GetAll();
+            bookToEdit.SelectedBook = db.GetBookById(id);
             return View(bookToEdit);
         }
 
