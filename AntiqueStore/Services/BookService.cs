@@ -102,7 +102,18 @@ namespace AntiqueStore.Services
                 price *= 1.85;
             }
 
+            int newPrice = PreviousPrice(book) / 2;
+
+            newPrice = (int)price;
+            
             return (int)price;
+        }
+
+        public int PreviousPrice(Book book)
+        {
+            Book bookInStock = bookRepository.Read().Where(x => x.Author.Equals(book.Author) && x.Title.Equals(book.Title) && x.PublicationDate.Equals(book.PublicationDate)).First();
+
+            return bookInStock.Price;
         }
     }
 }
