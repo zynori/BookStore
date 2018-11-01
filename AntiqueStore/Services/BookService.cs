@@ -92,7 +92,7 @@ namespace AntiqueStore.Services
                 price *= 1.25;
             }
             
-            return price;
+            return (int)price;
         }
     }
 }
