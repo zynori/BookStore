@@ -85,13 +85,13 @@ namespace AntiqueStore.Services
 
         public int ForSale(Book book)
         {
-            int price = 300;
+            double price = 300;
 
-            if (book.Page > 200)
+            for (int i = 200; i > book.Page; i += 200)
             {
-                price += 300;
+                price *= 1.25;
             }
-
+            
             return price;
         }
     }
