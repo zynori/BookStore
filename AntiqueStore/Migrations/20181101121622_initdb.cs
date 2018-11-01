@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AntiqueStore.Migrations
@@ -43,7 +44,7 @@ namespace AntiqueStore.Migrations
                     Title = table.Column<string>(nullable: true),
                     Language = table.Column<string>(nullable: true),
                     Page = table.Column<int>(nullable: false),
-                    PublicationDate = table.Column<string>(nullable: true),
+                    PublicationDate = table.Column<DateTime>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),
                     Price = table.Column<int>(nullable: false),
                     FormatId = table.Column<int>(nullable: false),
@@ -87,12 +88,12 @@ namespace AntiqueStore.Migrations
             migrationBuilder.InsertData(
                 table: "Books",
                 columns: new[] { "Id", "Author", "FormatId", "Language", "Page", "Price", "PublicationDate", "QualityId", "Quantity", "Title" },
-                values: new object[] { 1, "Andre Aciman 2", 1, "English", 256, 6999, "03/Apr/2018", 1, 2, "Call Me By Your Name" });
+                values: new object[] { 1, "Andre Aciman 2", 1, "English", 256, 6999, new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Local), 1, 2, "Call Me By Your Name" });
 
             migrationBuilder.InsertData(
                 table: "Books",
                 columns: new[] { "Id", "Author", "FormatId", "Language", "Page", "Price", "PublicationDate", "QualityId", "Quantity", "Title" },
-                values: new object[] { 2, "Stephen King", 2, "English", 160, 2399, "30/Oct/2018", 1, 1, "Elevation" });
+                values: new object[] { 2, "Stephen King", 2, "English", 160, 2399, new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Local), 1, 1, "Elevation" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_FormatId",

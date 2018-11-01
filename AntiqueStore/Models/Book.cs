@@ -14,7 +14,7 @@ namespace AntiqueStore.Models
         public string Title { get; set; }
         public string Language { get; set; }
         public int Page { get; set; }
-        public string PublicationDate { get; set; }
+        public DateTime PublicationDate { get; set; }
         public int Quantity { get; set; }
         public int Price { get; set; }
 
