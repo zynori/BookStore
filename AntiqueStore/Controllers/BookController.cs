@@ -71,15 +71,16 @@ namespace AntiqueStore.Controllers
         [HttpGet("/forsale")]
         public IActionResult ForSale()
         {
-            return View();
+            return View(db.GetAll());
         }
 
         [HttpPost("/forsale")]
         public IActionResult ForSale(Book book)
         {
-            db.ForSale(book);
-
-            return RedirectToAction("View", book.Id);
+            var bookPrice = db.ForSale(book);
+            book.Price = bookPrice;
+            db.AddBook(book);
+            return RedirectToAction("View", book);
         }
 
         [HttpGet("/view/{id}")]

@@ -1,4 +1,4 @@
-﻿@model Book
+﻿@model AntiqueStore.ViewModel.BookViewModel
 
 @{
 	ViewData["Title"] = "ForSale";
@@ -16,6 +16,24 @@
 	<label>Page:</label><input type="number" name="Page" value="" />
 	<hr />
 	<label>Publication Date:</label><input type="text" name="PublicationDate" value="" />
+	<hr />
+	<label>Condition:</label>
+	<select name="QualityId">
+		<option value="" disabled selected>Select condition</option>
+		@foreach (Quality quality in Model.Qualities)
+		{
+			<option value=@quality.Id>@quality.Condition</option>
+		}
+	</select>
+	<hr />
+	<label>Binding:</label>
+	<select name="FormatId">
+		<option value="" disabled selected>Select binding</option>
+		@foreach (Format format in Model.Formats)
+		{
+			<option value=@format.Id>@format.Binding</option>
+		}
+	</select>
 	
 	<button type="submit">Submit</button>
 </form>

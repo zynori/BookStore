@@ -83,7 +83,7 @@ namespace AntiqueStore.Services
             return GetBooks().Where(x => (x.Author.ToLower().Contains(input.ToLower()) || x.Title.ToLower().Contains(input.ToLower())) && (!inStock || x.Quantity > 0)).ToList();
         }
 
-        public void ForSale(Book book)
+        public int ForSale(Book book)
         {
             int price = 300;
 
@@ -92,7 +92,7 @@ namespace AntiqueStore.Services
                 price += 300;
             }
 
-            AddBook(book);
+            return price;
         }
     }
 }
