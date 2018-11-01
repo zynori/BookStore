@@ -91,7 +91,17 @@ namespace AntiqueStore.Services
             {
                 price *= 1.25;
             }
-            
+
+            if (book.PublicationDate.Year < 1945)
+            {
+                price *= 1.25;
+            }
+
+            if (book.PublicationDate.Year < 1900)
+            {
+                price *= 1.85;
+            }
+
             return (int)price;
         }
     }
