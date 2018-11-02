@@ -23,7 +23,6 @@ namespace AntiqueStore.Services
 
         public void AddBook(Book book)
         {
-            book.PublicationDate.ToShortDateString();
             bookRepository.Create(book);
         }
         
@@ -90,7 +89,7 @@ namespace AntiqueStore.Services
 
             if (previousPrice != 0)
             {
-                var temp = previousPrice * (1 - 0.2);
+                double temp = previousPrice * 0.5;
                 return (int)temp;
             }
 
@@ -108,6 +107,15 @@ namespace AntiqueStore.Services
             else if (book.PublicationDate.Year < 1945)
             {
                 price *= 1.25;
+            }
+
+            if (FreeSpaceLeft() < 500)
+            {
+                price *= 0.6;
+            }
+            else if (FreeSpaceLeft() < 2500)
+            {
+                price *= 0.8;
             }
             
             return (int)price;
@@ -127,6 +135,16 @@ namespace AntiqueStore.Services
             }
             
             return bookInStock.Price;
+        }
+
+        public int FreeSpaceLeft()
+        {
+            int allSpace = 5000;
+            int booksIn = bookRepository.Read().Where(x => x.Quantity > 0).Count();
+
+            int freeSpace = allSpace - booksIn;
+
+            return freeSpace;
         }
     }
 }
