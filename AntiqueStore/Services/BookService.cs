@@ -23,6 +23,7 @@ namespace AntiqueStore.Services
 
         public void AddBook(Book book)
         {
+            book.PublicationDate.ToShortDateString();
             bookRepository.Create(book);
         }
         
