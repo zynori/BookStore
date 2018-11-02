@@ -13,6 +13,8 @@ namespace AntiqueStore.Services
         private BookRepository bookRepository;
         private QualityRepository qualityRepository;
         private FormatRepository formatRepository;
+        private int allSpace = 5000;
+        private double price = 150;
 
         public BookService(BookRepository bookRepository, QualityRepository qualityRepository, FormatRepository formatRepository)
         {
@@ -83,18 +85,15 @@ namespace AntiqueStore.Services
             return GetBooks().Where(x => (x.Author.ToLower().Contains(input.ToLower()) || x.Title.ToLower().Contains(input.ToLower())) && (!inStock || x.Quantity > 0)).ToList();
         }
 
-        public int ForSale(Book book)
+        public int CalculateSalePrice(Book book)
         {
-            int previousPrice = PreviousPrice(book);
+            int previousPrice = GetPreviousPrice(book);
 
             if (previousPrice != 0)
             {
-                double temp = previousPrice * 0.5;
-                return (int)temp;
+                return (int)Math.Round(previousPrice * 0.5);
             }
 
-            double price = 150;
-            
             for (int i = 200; i < book.Page; i += 200)
             {
                 price *= 1.25;
@@ -109,19 +108,19 @@ namespace AntiqueStore.Services
                 price *= 1.25;
             }
 
-            if (FreeSpaceLeft() < 500)
+            if (GetFreeSpaceLeft() < allSpace * 0.1)
             {
                 price *= 0.6;
             }
-            else if (FreeSpaceLeft() < 2500)
+            else if (GetFreeSpaceLeft() < allSpace * 0.5)
             {
                 price *= 0.8;
             }
             
-            return (int)price;
+            return (int)Math.Round(price);
         }
 
-        public int PreviousPrice(Book book)
+        public int GetPreviousPrice(Book book)
         {
             Book bookInStock = new Book();
 
@@ -137,10 +136,8 @@ namespace AntiqueStore.Services
             return bookInStock.Price;
         }
 
-        public int FreeSpaceLeft()
+        public int GetFreeSpaceLeft()
         {
-            int allSpace = 5000;
-
             int booksIn = 0;
 
             foreach (Book book in bookRepository.Read())

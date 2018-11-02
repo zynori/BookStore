@@ -77,7 +77,7 @@ namespace AntiqueStore.Controllers
         [HttpPost("/forsale")]
         public IActionResult ForSale(Book book)
         {
-            var bookPrice = db.ForSale(book);
+            var bookPrice = db.CalculateSalePrice(book);
             book.Price = bookPrice;
             db.AddBook(book);
             return RedirectToAction("View", book);
