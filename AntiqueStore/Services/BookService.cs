@@ -85,14 +85,17 @@ namespace AntiqueStore.Services
 
         public int ForSale(Book book)
         {
-            double price = 300;
+            int previousPrice = PreviousPrice(book);
 
-            for (int i = 200; i > book.Page; i += 200)
+            if (previousPrice != 0)
             {
-                price *= 1.25;
+                var temp = previousPrice * (1 - 0.2);
+                return (int)temp;
             }
 
-            if (book.PublicationDate.Year < 1945)
+            double price = 150;
+            
+            for (int i = 200; i < book.Page; i += 200)
             {
                 price *= 1.25;
             }
@@ -101,18 +104,27 @@ namespace AntiqueStore.Services
             {
                 price *= 1.85;
             }
-
-            int newPrice = PreviousPrice(book) / 2;
-
-            newPrice = (int)price;
+            else if (book.PublicationDate.Year < 1945)
+            {
+                price *= 1.25;
+            }
             
             return (int)price;
         }
 
         public int PreviousPrice(Book book)
         {
-            Book bookInStock = bookRepository.Read().Where(x => x.Author.Equals(book.Author) && x.Title.Equals(book.Title) && x.PublicationDate.Equals(book.PublicationDate)).First();
+            Book bookInStock = new Book();
 
+            try
+            {
+                bookInStock = bookRepository.Read().Where(x => x.Author.Equals(book.Author) && x.Title.Equals(book.Title) && x.PublicationDate.Equals(book.PublicationDate)).First();
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            
             return bookInStock.Price;
         }
     }
