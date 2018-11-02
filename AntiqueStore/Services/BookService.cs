@@ -140,7 +140,13 @@ namespace AntiqueStore.Services
         public int FreeSpaceLeft()
         {
             int allSpace = 5000;
-            int booksIn = bookRepository.Read().Where(x => x.Quantity > 0).Count();
+
+            int booksIn = 0;
+
+            foreach (Book book in bookRepository.Read())
+            {
+                booksIn += book.Quantity;
+            }
 
             int freeSpace = allSpace - booksIn;
 
