@@ -23,7 +23,7 @@
 	<select name="QualityId">
 		@foreach (Quality quality in Model.Qualities)
 		{
-			<option value=@quality.Id>@Model.SelectedBook.Quality.Condition</option>
+			<option value=@quality.Id>@quality.Condition</option>
 		}
 	</select>
 	<hr />
@@ -31,7 +31,7 @@
 	<select name="FormatId">
 		@foreach (Format format in Model.Formats)
 		{
-			<option value=@format.Id>@Model.SelectedBook.Format.Binding</option>
+			<option value=@format.Id>@format.Binding</option>
 		}
 	</select>
 	<hr />
