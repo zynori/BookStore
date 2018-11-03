@@ -75,14 +75,25 @@ namespace AntiqueStore.Services
             };
         }
 
-        public BookViewModel Search(string input, bool inStock)
+        public BookViewModel Search(string input = "", bool inStock = false)
         {
-            if(input is null && inStock)
+            if (input is null)
             {
-                return GetAll();
+                input = "";
             }
 
-            return GetAll().Books.Where(x => (x.Author.ToLower().Contains(input.ToLower()) || x.Title.ToLower().Contains(input.ToLower())) && (!inStock || x.Quantity > 0)) as BookViewModel;
+            BookViewModel viewModel = this.GetAll();
+
+            if (input == "" && !inStock)
+            {
+                return viewModel;
+            }
+
+            viewModel.Books = viewModel.Books.Where(
+                x => (x.Author.ToLower().Contains(input.ToLower()) || x.Title.ToLower().Contains(input.ToLower())) && (!inStock || x.Quantity > 0)
+            );
+
+            return viewModel;
         }
 
         public int CalculateSalePrice(Book book)
