@@ -133,18 +133,16 @@ namespace AntiqueStore.Services
 
         public int GetPreviousPrice(Book book)
         {
-            Book bookInStock = new Book();
+            bool bookInStock = true;
 
-            try
-            {
-                bookInStock = bookRepository.Read().Where(x => x.Author.Equals(book.Author) && x.Title.Equals(book.Title) && x.PublicationDate.Equals(book.PublicationDate)).First();
-            }
-            catch (Exception)
+            bookInStock = bookRepository.Read().Where(x => x.Author.Equals(book.Author) && x.Title.Equals(book.Title) && x.PublicationDate.Equals(book.PublicationDate)).Any();
+
+            if (!bookInStock)
             {
                 return 0;
             }
-            
-            return bookInStock.Price;
+
+            return book.Price;
         }
 
         public int GetFreeSpaceLeft()

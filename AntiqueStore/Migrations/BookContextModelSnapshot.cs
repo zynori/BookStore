@@ -52,8 +52,8 @@ namespace AntiqueStore.Migrations
                     b.ToTable("Books");
 
                     b.HasData(
-                        new { Id = 1, Author = "Andre Aciman 2", FormatId = 1, Language = "English", Page = 256, Price = 6999, PublicationDate = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Local), QualityId = 1, Quantity = 2, Title = "Call Me By Your Name" },
-                        new { Id = 2, Author = "Stephen King", FormatId = 2, Language = "English", Page = 160, Price = 2399, PublicationDate = new DateTime(2018, 11, 1, 0, 0, 0, 0, DateTimeKind.Local), QualityId = 1, Quantity = 1, Title = "Elevation" }
+                        new { Id = 1, Author = "Andre Aciman 2", FormatId = 1, Language = "English", Page = 256, Price = 6999, PublicationDate = new DateTime(2018, 11, 8, 0, 0, 0, 0, DateTimeKind.Local), QualityId = 1, Quantity = 2, Title = "Call Me By Your Name" },
+                        new { Id = 2, Author = "Stephen King", FormatId = 2, Language = "English", Page = 160, Price = 2399, PublicationDate = new DateTime(2018, 11, 8, 0, 0, 0, 0, DateTimeKind.Local), QualityId = 1, Quantity = 1, Title = "Elevation" }
                     );
                 });
 
