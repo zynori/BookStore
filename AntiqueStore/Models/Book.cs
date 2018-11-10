@@ -24,5 +24,7 @@ namespace AntiqueStore.Models
         [ForeignKey("Quality")]
         public int QualityId { get; set; }
         public virtual Quality Quality { get; set; }
+
+        public virtual ICollection<BookOrder> BookOrders { get; set; }
     }
 }

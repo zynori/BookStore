@@ -9,6 +9,22 @@ namespace AntiqueStore.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Customers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    LastName = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Customers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Formats",
                 columns: table => new
                 {
@@ -32,6 +48,30 @@ namespace AntiqueStore.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Qualities", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Number = table.Column<int>(nullable: false),
+                    TotalQuantity = table.Column<int>(nullable: false),
+                    ShippingCost = table.Column<int>(nullable: false),
+                    TotalPrice = table.Column<int>(nullable: false),
+                    OrderedAt = table.Column<DateTime>(nullable: false),
+                    CustomerId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Orders_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -67,6 +107,39 @@ namespace AntiqueStore.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "BookOrders",
+                columns: table => new
+                {
+                    BookId = table.Column<int>(nullable: false),
+                    OrderId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BookOrders", x => new { x.BookId, x.OrderId });
+                    table.ForeignKey(
+                        name: "FK_BookOrders_Books_BookId",
+                        column: x => x.BookId,
+                        principalTable: "Books",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BookOrders_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Customers",
+                columns: new[] { "Id", "CreatedAt", "Email", "FirstName", "LastName" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2018, 11, 10, 0, 0, 0, 0, DateTimeKind.Local), "jeno@gmail.com", "Bela", "Kovacs" },
+                    { 2, new DateTime(2018, 11, 10, 0, 0, 0, 0, DateTimeKind.Local), "bela@gmail.com", "Jeno", "Toth" }
+                });
+
             migrationBuilder.InsertData(
                 table: "Formats",
                 columns: new[] { "Id", "Binding" },
@@ -88,12 +161,17 @@ namespace AntiqueStore.Migrations
             migrationBuilder.InsertData(
                 table: "Books",
                 columns: new[] { "Id", "Author", "FormatId", "Language", "Page", "Price", "PublicationDate", "QualityId", "Quantity", "Title" },
-                values: new object[] { 1, "Andre Aciman 2", 1, "English", 256, 6999, new DateTime(2018, 11, 8, 0, 0, 0, 0, DateTimeKind.Local), 1, 2, "Call Me By Your Name" });
+                values: new object[] { 1, "Andre Aciman 2", 1, "English", 256, 6999, new DateTime(2018, 11, 10, 0, 0, 0, 0, DateTimeKind.Local), 1, 2, "Call Me By Your Name" });
 
             migrationBuilder.InsertData(
                 table: "Books",
                 columns: new[] { "Id", "Author", "FormatId", "Language", "Page", "Price", "PublicationDate", "QualityId", "Quantity", "Title" },
-                values: new object[] { 2, "Stephen King", 2, "English", 160, 2399, new DateTime(2018, 11, 8, 0, 0, 0, 0, DateTimeKind.Local), 1, 1, "Elevation" });
+                values: new object[] { 2, "Stephen King", 2, "English", 160, 2399, new DateTime(2018, 11, 10, 0, 0, 0, 0, DateTimeKind.Local), 1, 1, "Elevation" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BookOrders_OrderId",
+                table: "BookOrders",
+                column: "OrderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_FormatId",
@@ -104,18 +182,32 @@ namespace AntiqueStore.Migrations
                 name: "IX_Books_QualityId",
                 table: "Books",
                 column: "QualityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_CustomerId",
+                table: "Orders",
+                column: "CustomerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "BookOrders");
+
+            migrationBuilder.DropTable(
                 name: "Books");
+
+            migrationBuilder.DropTable(
+                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Formats");
 
             migrationBuilder.DropTable(
                 name: "Qualities");
+
+            migrationBuilder.DropTable(
+                name: "Customers");
         }
     }
 }
