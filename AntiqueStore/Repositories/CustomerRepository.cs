@@ -1,5 +1,6 @@
 ﻿using AntiqueStore.Entities;
 using AntiqueStore.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,9 @@ namespace AntiqueStore.Repositories
 
         public IEnumerable<Customer> Read()
         {
-            return database.Customers.ToList();
+            return database.Customers
+                .Include(x => x.Orders)
+                .ToList();
         }
 
         public void Update(Customer customer)
