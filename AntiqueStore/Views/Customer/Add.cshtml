@@ -1,0 +1,19 @@
+﻿@model AntiqueStore.ViewModel.CustomerViewModel
+
+@{
+	ViewData["Title"] = "Add";
+}
+
+<h2>Add</h2>
+
+<a href="/">Back</a>
+
+<form action="/add" method="post">
+	<label>Last name:</label><input type="text" name="LastName" value="" />
+	<hr />
+	<label>First name:</label><input type="text" name="FirstName" value="" />
+	<hr />
+	<label>E-mail:</label><input type="text" name="Email" value="" />
+	<hr />
+	<button type="submit">Submit</button>
+</form>

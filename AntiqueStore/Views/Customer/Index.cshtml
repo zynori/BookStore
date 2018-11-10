@@ -1,0 +1,37 @@
+﻿@model AntiqueStore.ViewModel.CustomerViewModel
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h2>Customers</h2>
+
+<a class="btn" href="/add">Add</a>
+
+<table class="table table-bordered table-responsive table-hover">
+	<thead style="border: none;">
+		<tr>
+			<th>Id</th>
+			<th>Last name</th>
+			<th>First name</th>
+			<th>Email</th>
+			<th>Registered</th>
+			<th>Orders</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (Customer customer in Model.Customers)
+		{
+		<tr>
+			<td>@customer.Id</td>
+			<td>@customer.LastName</td>
+			<td>@customer.FirstName</td>
+			<td>@customer.Email</td>
+			<td>@customer.CreatedAt.ToShortDateString()</td>
+			<td>@customer.Orders.Count()</td>
+			<td><a href="/edit/@customer.Id">EDIT</a></td>
+			<td><a href="/delete/@customer.Id">DELETE</a></td>
+			<td><a href="/view/@customer.Id">VIEW</a></td>
+		</tr>
+		}
+	</tbody>
+</table>
