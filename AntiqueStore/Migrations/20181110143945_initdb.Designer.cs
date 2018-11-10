@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AntiqueStore.Migrations
 {
     [DbContext(typeof(BookContext))]
-    [Migration("20181110142022_initdb")]
+    [Migration("20181110143945_initdb")]
     partial class initdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -137,6 +137,11 @@ namespace AntiqueStore.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
+
+                    b.HasData(
+                        new { Id = 1, CustomerId = 1, Number = 12193913, OrderedAt = new DateTime(2018, 11, 10, 0, 0, 0, 0, DateTimeKind.Local), ShippingCost = 2424, TotalPrice = 5432, TotalQuantity = 2 },
+                        new { Id = 2, CustomerId = 2, Number = 94384938, OrderedAt = new DateTime(2018, 11, 10, 0, 0, 0, 0, DateTimeKind.Local), ShippingCost = 123, TotalPrice = 542, TotalQuantity = 1 }
+                    );
                 });
 
             modelBuilder.Entity("AntiqueStore.Models.Quality", b =>

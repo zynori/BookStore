@@ -135,6 +135,11 @@ namespace AntiqueStore.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
+
+                    b.HasData(
+                        new { Id = 1, CustomerId = 1, Number = 12193913, OrderedAt = new DateTime(2018, 11, 10, 0, 0, 0, 0, DateTimeKind.Local), ShippingCost = 2424, TotalPrice = 5432, TotalQuantity = 2 },
+                        new { Id = 2, CustomerId = 2, Number = 94384938, OrderedAt = new DateTime(2018, 11, 10, 0, 0, 0, 0, DateTimeKind.Local), ShippingCost = 123, TotalPrice = 542, TotalQuantity = 1 }
+                    );
                 });
 
             modelBuilder.Entity("AntiqueStore.Models.Quality", b =>

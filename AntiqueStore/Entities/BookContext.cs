@@ -50,14 +50,14 @@ namespace AntiqueStore.Entities
                 );
 
             modelBuilder.Entity<Customer>().HasData(
-                new { Id = 1, CreatedAt = DateTime.Today, LastName = "Kovacs", FirstName = "Bela", Email = "jeno@gmail.com" },
-                new { Id = 2, CreatedAt = DateTime.Today, LastName = "Toth", FirstName = "Jeno", Email = "bela@gmail.com" }
+                new { Id = 1, CreatedAt = DateTime.Today, LastName = "Kovacs", FirstName = "Bela", Email = "jeno@gmail.com", OrderId = 1 },
+                new { Id = 2, CreatedAt = DateTime.Today, LastName = "Toth", FirstName = "Jeno", Email = "bela@gmail.com", OrderId = 2 }
                 );
 
-            //modelBuilder.Entity<Order>().HasData(
-            //    new { Id = 1, Number = 12193913, TotalQuantity = 2, ShippingCost = 2424, TotalPrice = 5432, OrderedAt = DateTime.Today, CustomerId = 1, Books = 1},
-            //    new { Id = 2, Number = 94384938, TotalQuantity = 1, ShippingCost = 123, TotalPrice = 542, OrderedAt = DateTime.Today, CustomerId = 2, Books = 2 }
-            //    );
+            modelBuilder.Entity<Order>().HasData(
+                new { Id = 1, Number = 12193913, TotalQuantity = 2, ShippingCost = 2424, TotalPrice = 5432, OrderedAt = DateTime.Today, CustomerId = 1, Books = 1 },
+                new { Id = 2, Number = 94384938, TotalQuantity = 1, ShippingCost = 123, TotalPrice = 542, OrderedAt = DateTime.Today, CustomerId = 2, Books = 2 }
+                );
         }
     }
 }

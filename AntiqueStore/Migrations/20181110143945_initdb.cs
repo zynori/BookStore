@@ -161,12 +161,20 @@ namespace AntiqueStore.Migrations
             migrationBuilder.InsertData(
                 table: "Books",
                 columns: new[] { "Id", "Author", "FormatId", "Language", "Page", "Price", "PublicationDate", "QualityId", "Quantity", "Title" },
-                values: new object[] { 1, "Andre Aciman 2", 1, "English", 256, 6999, new DateTime(2018, 11, 10, 0, 0, 0, 0, DateTimeKind.Local), 1, 2, "Call Me By Your Name" });
+                values: new object[,]
+                {
+                    { 1, "Andre Aciman 2", 1, "English", 256, 6999, new DateTime(2018, 11, 10, 0, 0, 0, 0, DateTimeKind.Local), 1, 2, "Call Me By Your Name" },
+                    { 2, "Stephen King", 2, "English", 160, 2399, new DateTime(2018, 11, 10, 0, 0, 0, 0, DateTimeKind.Local), 1, 1, "Elevation" }
+                });
 
             migrationBuilder.InsertData(
-                table: "Books",
-                columns: new[] { "Id", "Author", "FormatId", "Language", "Page", "Price", "PublicationDate", "QualityId", "Quantity", "Title" },
-                values: new object[] { 2, "Stephen King", 2, "English", 160, 2399, new DateTime(2018, 11, 10, 0, 0, 0, 0, DateTimeKind.Local), 1, 1, "Elevation" });
+                table: "Orders",
+                columns: new[] { "Id", "CustomerId", "Number", "OrderedAt", "ShippingCost", "TotalPrice", "TotalQuantity" },
+                values: new object[,]
+                {
+                    { 1, 1, 12193913, new DateTime(2018, 11, 10, 0, 0, 0, 0, DateTimeKind.Local), 2424, 5432, 2 },
+                    { 2, 2, 94384938, new DateTime(2018, 11, 10, 0, 0, 0, 0, DateTimeKind.Local), 123, 542, 1 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_BookOrders_OrderId",
