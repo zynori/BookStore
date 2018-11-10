@@ -45,6 +45,8 @@ namespace AntiqueStore
             services.AddTransient<BookRepository>();
             services.AddTransient<FormatRepository>();
             services.AddTransient<QualityRepository>();
+            services.AddTransient<CustomerRepository>();
+            services.AddTransient<OrderRepository>();
             services.AddTransient<BookService>();
         }
 
