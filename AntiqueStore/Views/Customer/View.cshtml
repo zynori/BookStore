@@ -1,4 +1,4 @@
-﻿@model Book
+﻿@model AntiqueStore.ViewModel.CustomerViewModel
 
 @{
 	ViewData["Title"] = "View";
@@ -9,17 +9,17 @@
 <a href="/">Back</a>
 <hr />
 
-<label>Author: </label><label name="Author">@Model.Author</label>
+<label>First Name: </label><label name="FirstName">@Model.SelectedCustomer.FirstName</label>
 <hr />
-<label>Title: </label><label name="Author">@Model.Title</label>
+<label>Last Name: </label><label name="LastName">@Model.SelectedCustomer.LastName</label>
 <hr />
-<label>Language: </label><label name="Author">@Model.Language</label>
+<label>Email: </label><label name="Email">@Model.SelectedCustomer.Email</label>
 <hr />
-<label>Page: </label><label name="Author">@Model.Page</label>
+<label>Registration date: </label><label name="CreatedAt">@Model.SelectedCustomer.CreatedAt</label>
 <hr />
-<label>Publication Date: </label><label name="Author">@Model.PublicationDate</label>
-<hr />
-<label>Quantity: </label><label name="Author">@Model.Quantity</label>
-<hr />
-<label>Price: </label><label name="Author" style="color: red">@Model.Price HUF</label>
-<hr />
+<label>Orders: </label>
+@foreach (var item in Model.Orders)
+{
+<label name="Orders">@Model.SelectedCustomer.Orders</label>
+}
+
