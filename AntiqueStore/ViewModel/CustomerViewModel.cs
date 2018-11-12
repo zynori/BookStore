@@ -9,6 +9,7 @@ namespace AntiqueStore.ViewModel
     public class CustomerViewModel
     {
         public IEnumerable<Book> Books { get; set; }
+        public Customer SelectedCustomer { get; set; }
         public IEnumerable<Order> Orders { get; set; }
         public IEnumerable<Customer> Customers { get; set; }
     }
