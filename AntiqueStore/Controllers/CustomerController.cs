@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AntiqueStore.Models;
 using AntiqueStore.Services;
+using AntiqueStore.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AntiqueStore.Controllers
@@ -32,6 +33,22 @@ namespace AntiqueStore.Controllers
         public IActionResult AddNew(Customer customer)
         {
             db.AddCustomer(customer);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet("/edit/{id}")]
+        public IActionResult Edit(int id)
+        {
+            CustomerViewModel customerToEdit = db.GetAll();
+            customerToEdit.SelectedCustomer = db.GetCustomerById(id);
+            return View(customerToEdit);
+        }
+
+        [HttpPost("/edit/{id}")]
+        public IActionResult Edit(int id, Customer customer)
+        {
+            customer.Id = id;
+            db.EditCustomer(customer);
             return RedirectToAction("Index");
         }
     }
