@@ -6,14 +6,14 @@
 
 <h2>Edit</h2>
 
-<a href="/">Back</a>
+<a href="/customer">Back</a>
 
-<form action="/edit/@Model.SelectedCustomer.Id" method="post" name="book">
-	<label>Author:</label><input type="text" name="Author" value="@Model.SelectedCustomer.FirstName" />
+<form action="/customer/edit/@Model.SelectedCustomer.Id" method="post" name="customer">
+	<label>First Name:</label><input type="text" name="FirstName" value="@Model.SelectedCustomer.FirstName" />
 	<hr />
-	<label>Title:</label><input type="text" name="Title" value="@Model.SelectedCustomer.LastName" />
+	<label>Last Name:</label><input type="text" name="LastName" value="@Model.SelectedCustomer.LastName" />
 	<hr />
-	<label>Language:</label><input type="text" name="Language" value="@Model.SelectedCustomer.Email" />
+	<label>Email:</label><input type="text" name="Email" value="@Model.SelectedCustomer.Email" />
 	
 	<button type="submit">Submit</button>
 </form>

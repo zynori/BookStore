@@ -23,20 +23,20 @@ namespace AntiqueStore.Controllers
             return View(db.GetAll());
         }
 
-        [HttpGet("/add")]
+        [HttpGet("/customer/add")]
         public IActionResult Add()
         {
             return View(db.GetAll());
         }
 
-        [HttpPost("/add")]
+        [HttpPost("/customer/add")]
         public IActionResult AddNew(Customer customer)
         {
             db.AddCustomer(customer);
             return RedirectToAction("Index");
         }
 
-        [HttpGet("/edit/{id}")]
+        [HttpGet("/customer/edit/{id}")]
         public IActionResult Edit(int id)
         {
             CustomerViewModel customerToEdit = db.GetAll();
@@ -44,7 +44,7 @@ namespace AntiqueStore.Controllers
             return View(customerToEdit);
         }
 
-        [HttpPost("/edit/{id}")]
+        [HttpPost("/customer/edit/{id}")]
         public IActionResult Edit(int id, Customer customer)
         {
             customer.Id = id;
