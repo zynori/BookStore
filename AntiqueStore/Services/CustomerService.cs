@@ -57,7 +57,7 @@ namespace AntiqueStore.Services
             return bookRepository.Read();
         }
 
-        public CustomerViewModel GetAll()
+        public CustomerViewModel GetAllCustomer()
         {
             return new CustomerViewModel()
             {

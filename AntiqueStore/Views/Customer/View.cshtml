@@ -18,8 +18,18 @@
 <label>Registration date: </label><label name="CreatedAt">@Model.SelectedCustomer.CreatedAt</label>
 <hr />
 <label>Orders: </label>
-@foreach (var item in Model.Orders)
+@foreach (var item in Model.SelectedCustomer.Orders)
 {
-<label name="Orders">@Model.SelectedCustomer.Orders</label>
+	<label name="Id">@item.Id</label>
+	<label name="Number">@item.Number</label>
+	<label name="OrderedAt">@item.OrderedAt</label>
+	<label name="ShippingCost">@item.ShippingCost</label>
+	<label name="TotalQuantity">@item.TotalQuantity</label>
+	<label name="TotalPrice">@item.TotalPrice</label>
+	<label name="Books">Books: </label>
+	@foreach (var orderedBooks in item.BookOrders)
+	{
+		<label name="Book">@orderedBooks.Book</label>
+	}
 }
 
